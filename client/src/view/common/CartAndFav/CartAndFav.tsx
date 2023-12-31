@@ -3,7 +3,7 @@ import fav from '../../../assests/icons/favourite.png';
 
 export function CartAndFav() {
     return (
-        <section className={"flex border border-red-600 w-60 h-14 mt-[80px] absolute right-0"}>
+        <section className={"container flex border border-red-600 w-60 h-14 absolute right-0 top-[80px]"}>
 
             {/*Favourite*/}
             <div className={"w-1/2 flex border border-black cursor-pointer"}>
