@@ -1,4 +1,4 @@
-import logo from '../../../assests/icons/logo-s.png';
+import logo from '../../../assests/icons/favourite.png';
 
 export function NavBar() {
     return (
