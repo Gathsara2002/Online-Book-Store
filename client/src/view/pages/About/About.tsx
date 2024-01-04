@@ -50,8 +50,10 @@ export const About = () => {
 
             </section>
 
+            <h1 className={"text-center text-3xl font-bold mt-32"}>Our Customers</h1>
+
             {/*reviews*/}
-            <section className={"container mt-32 flex justify-evenly mb-16"}>
+            <section className={"container mt-16 flex justify-evenly mb-16"}>
 
                 {/*review 1*/}
                 <div className="flex items-start w-1/4 border rounded  shadow-lg shadow-gray-400 p-4">
