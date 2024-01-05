@@ -6,6 +6,7 @@ import {Home} from "./view/pages/Home/Home";
 import {Footer} from "./view/common/Footer/Footer";
 import {About} from "./view/pages/About/About";
 import {Contact} from "./view/pages/Contact/Contact";
+import {Product} from "./view/pages/Product/Product";
 
 function App() {
     return (
@@ -14,7 +15,8 @@ function App() {
             <CartAndFav></CartAndFav>
             {/*<Home></Home>*/}
             {/*<About></About>*/}
-            <Contact></Contact>
+            {/*<Contact></Contact>*/}
+            <Product></Product>
             {/*<Footer></Footer>*/}
         </>
     );
