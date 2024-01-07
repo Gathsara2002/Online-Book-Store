@@ -8,6 +8,7 @@ import {About} from "./view/pages/About/About";
 import {Contact} from "./view/pages/Contact/Contact";
 import {Product} from "./view/pages/Product/Product";
 import {Login} from "./view/pages/Login/Login";
+import {Signup} from "./view/pages/Signup/Signup";
 
 function App() {
     return (
@@ -19,7 +20,8 @@ function App() {
             {/*<Contact></Contact>*/}
             {/*<Product></Product>*/}
             {/*<Footer></Footer>*/}
-            <Login></Login>
+            {/*<Login></Login>*/}
+            <Signup></Signup>
         </>
     );
 }
