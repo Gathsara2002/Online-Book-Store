@@ -7,17 +7,19 @@ import {Footer} from "./view/common/Footer/Footer";
 import {About} from "./view/pages/About/About";
 import {Contact} from "./view/pages/Contact/Contact";
 import {Product} from "./view/pages/Product/Product";
+import {Login} from "./view/pages/Login/Login";
 
 function App() {
     return (
         <>
-            <NavBar></NavBar>
-            <CartAndFav></CartAndFav>
+            {/*<NavBar></NavBar>*/}
+            {/*<CartAndFav></CartAndFav>*/}
             {/*<Home></Home>*/}
             {/*<About></About>*/}
             {/*<Contact></Contact>*/}
-            <Product></Product>
+            {/*<Product></Product>*/}
             {/*<Footer></Footer>*/}
+            <Login></Login>
         </>
     );
 }
