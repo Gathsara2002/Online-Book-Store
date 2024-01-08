@@ -9,6 +9,7 @@ import {Contact} from "./view/pages/Contact/Contact";
 import {Product} from "./view/pages/Product/Product";
 import {Login} from "./view/pages/Login/Login";
 import {Signup} from "./view/pages/Signup/Signup";
+import {ItemTemplate} from "./view/common/ItemTemplate/ItemTemplate";
 
 function App() {
     return (
@@ -21,7 +22,8 @@ function App() {
             {/*<Product></Product>*/}
             {/*<Footer></Footer>*/}
             {/*<Login></Login>*/}
-            <Signup></Signup>
+            {/*<Signup></Signup>*/}
+            <ItemTemplate></ItemTemplate>
         </>
     );
 }
