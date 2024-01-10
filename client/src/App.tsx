@@ -14,8 +14,8 @@ import {ItemTemplate} from "./view/common/ItemTemplate/ItemTemplate";
 function App() {
     return (
         <>
-            {/*<NavBar></NavBar>*/}
-            {/*<CartAndFav></CartAndFav>*/}
+            <NavBar></NavBar>
+            <CartAndFav></CartAndFav>
             {/*<Home></Home>*/}
             {/*<About></About>*/}
             {/*<Contact></Contact>*/}
