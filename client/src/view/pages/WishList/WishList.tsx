@@ -7,7 +7,7 @@ export const WishList = () => {
                 <h1 className={"text-3xl font-bold ml-20"}>Your WishList</h1>
 
                 {/*list*/}
-                <div className={"ml-20 mr-20 mt-10 border border-black h-20 grid grid-cols-7"}>
+                <div className={"ml-20 mr-20 mt-10 border border-black grid grid-cols-7 gap-3"}>
 
                     {/*headings*/}
                     <div className={"col-span-2 border border-red-600"}>
@@ -24,6 +24,19 @@ export const WishList = () => {
                     </div>
 
 
+                    {/*items*/}
+                    <div className={"col-span-2 border border-red-600"}>
+                        <img src={img} alt="" className={"h-32 object-contain"}/>
+                    </div>
+                    <div className={"border border-red-600"}>
+                        Price
+                    </div>
+                    <div className={"col-span-2 border border-red-600"}>
+                        <button>Add To Cart</button>
+                    </div>
+                    <div className={"col-span-2 border border-red-600"}>
+                        <button>Remove</button>
+                    </div>
                 </div>
 
             </div>
