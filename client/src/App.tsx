@@ -10,6 +10,7 @@ import {Product} from "./view/pages/Product/Product";
 import {Login} from "./view/pages/Login/Login";
 import {Signup} from "./view/pages/Signup/Signup";
 import {ItemTemplate} from "./view/common/ItemTemplate/ItemTemplate";
+import {CartPage} from "./view/pages/CartPage/CartPage";
 
 function App() {
     return (
@@ -23,7 +24,8 @@ function App() {
             {/*<Footer></Footer>*/}
             {/*<Login></Login>*/}
             {/*<Signup></Signup>*/}
-            <ItemTemplate></ItemTemplate>
+            {/*<ItemTemplate></ItemTemplate>*/}
+            <CartPage></CartPage>
         </>
     );
 }
