@@ -11,6 +11,7 @@ import {Login} from "./view/pages/Login/Login";
 import {Signup} from "./view/pages/Signup/Signup";
 import {ItemTemplate} from "./view/common/ItemTemplate/ItemTemplate";
 import {CartPage} from "./view/pages/CartPage/CartPage";
+import {WishList} from "./view/pages/WishList/WishList";
 
 function App() {
     return (
@@ -25,7 +26,8 @@ function App() {
             {/*<Login></Login>*/}
             {/*<Signup></Signup>*/}
             {/*<ItemTemplate></ItemTemplate>*/}
-            <CartPage></CartPage>
+            {/*<CartPage></CartPage>*/}
+            <WishList></WishList>
         </>
     );
 }
