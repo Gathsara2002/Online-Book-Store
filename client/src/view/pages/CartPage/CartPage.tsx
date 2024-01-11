@@ -6,9 +6,10 @@ export const CartPage = () => {
             <div className={"ml-10"}>
                 <h1 className={"text-3xl font-bold "}>Your Cart Items</h1>
 
-                {/*card*/}
-                <div className={"flex border border-blue-700 h-40 mr-10 mt-10 justify-between"}>
-                    <div className={"w-3/6 border border-black h-40 flex"}>
+                <div className={"border border-blue-700 mr-10 mt-12 justify-between w-3/6"}>
+
+                    {/*card*/}
+                    <div className={"w-full border border-black h-40 flex mb-4"}>
                         <img src={img} alt="" className={"h-full w-auto border border-red-600 p-2 rounded"}/>
                         <div className={"text-[18px] ml-12"}>
                             <h3>Book Name</h3>
@@ -23,7 +24,15 @@ export const CartPage = () => {
                     </div>
 
                     {/*summary*/}
-                    <div className={"w-2/6 border border-red-600 h-40"}></div>
+                    <div className={"w-2/6 border border-red-600 h-auto absolute right-10 top-52"}>
+                        <div className={"h-1/4 bg-cyan-300 p-0.5 text-2xl font-medium"}>Summary</div>
+                        <div className={"h-1/4  p-0.5 text-[18px]"}>Date</div>
+                        <div className={"h-1/4  p-0.5 text-[18px]"}>Total Items</div>
+                        <div className={"h-1/4  p-0.5 text-[18px]"}>Total Price</div>
+
+                        <button> Payment</button>
+                    </div>
+
                 </div>
             </div>
         </section>
