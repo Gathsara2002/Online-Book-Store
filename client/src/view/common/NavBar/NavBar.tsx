@@ -1,4 +1,4 @@
-import logo from '../../../assests/icons/favourite.png';
+import logo from '../../../assests/icons/logo.png';
 
 export function NavBar() {
     return (
@@ -6,7 +6,7 @@ export function NavBar() {
             className={"container flex w-full h-20 align-middle fixed items-center top-0 right-0 bg-white shadow-lg shadow-gray-400"}>
 
             {/*This is nav bar icon*/}
-            <img src={logo} alt="logo" className={"border border-red-600 w-28 h-16 object-contain ml-10"}/>
+            <img src={logo} alt="logo" className={"rounded w-28 h-16 object-contain ml-10"}/>
 
             {/*navigation items*/}
             <ul className="flex w-1/2 text-center items-center justify-evenly text-[20px] font-serif mx-auto">
