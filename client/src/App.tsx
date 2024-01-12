@@ -27,7 +27,7 @@ function App() {
             {/*<Signup></Signup>*/}
             {/*<ItemTemplate></ItemTemplate>*/}
             {/*<CartPage></CartPage>*/}
-            <WishList></WishList>
+            {/*<WishList></WishList>*/}
         </>
     );
 }
