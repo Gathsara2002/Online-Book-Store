@@ -2,9 +2,9 @@ export const Footer = () => {
     return (
         <section className={"container"}>
             <footer
-                className="bg-blue-900 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
+                className="bg-gray-800 text-center text-white lg:text-left">
                 <div
-                    className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
+                    className="flex items-center justify-center border-b-2 border-white p-6 lg:justify-between">
                     <div className="mr-12 hidden lg:block">
                         <span>Get connected with us on social networks:</span>
                     </div>
@@ -184,7 +184,7 @@ export const Footer = () => {
                 </div>
 
                 {/* <!--Copyright section--> */}
-                <div className="bg-blue-900 p-6 text-center dark:bg-blue-900">
+                <div className="bg-gray-800 p-6 text-center">
                     <span>© 2024 Copyright :</span>
                     <a
                         className="font-semibold text-white"

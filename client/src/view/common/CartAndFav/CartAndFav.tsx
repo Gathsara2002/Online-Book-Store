@@ -3,7 +3,7 @@ import fav from '../../../assests/icons/favourite.png';
 
 export function CartAndFav() {
     return (
-        <section className={"container flex w-60 h-14 absolute right-0 top-[85px]"}>
+        <section className={"container flex w-60 h-14 fixed right-0 top-[85px]"}>
 
             {/*Favourite*/}
             <div className={"w-1/2 flex cursor-pointer"}>

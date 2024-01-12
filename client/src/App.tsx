@@ -22,7 +22,7 @@ function App() {
             {/*<About></About>*/}
             {/*<Contact></Contact>*/}
             {/*<Product></Product>*/}
-            {/*<Footer></Footer>*/}
+            <Footer></Footer>
             {/*<Login></Login>*/}
             {/*<Signup></Signup>*/}
             {/*<ItemTemplate></ItemTemplate>*/}
