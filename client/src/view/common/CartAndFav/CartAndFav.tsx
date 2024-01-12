@@ -3,17 +3,17 @@ import fav from '../../../assests/icons/favourite.png';
 
 export function CartAndFav() {
     return (
-        <section className={"container flex border border-red-600 w-60 h-14 absolute right-0 top-[80px]"}>
+        <section className={"container flex w-60 h-14 absolute right-0 top-[85px]"}>
 
             {/*Favourite*/}
-            <div className={"w-1/2 flex border border-black cursor-pointer"}>
-                <img src={fav} alt="fav" className={"w-10 h-10 m"}/>
+            <div className={"w-1/2 flex cursor-pointer"}>
+                <img src={fav} alt="fav" className={"w-8 h-8 ml-3 mt-2"}/>
                 <h3 className={"ml-2"}>0</h3>
             </div>
 
             {/*Cart*/}
-            <div className={"w-1/2 flex border border-black cursor-pointer"}>
-                <img src={cart} alt="cart" className={"w-10 h-10"}/>
+            <div className={"w-1/2 flex cursor-pointer"}>
+                <img src={cart} alt="cart" className={"w-8 h-8 mt-2"}/>
                 <h3 className={"ml-2"}>0</h3>
             </div>
         </section>
