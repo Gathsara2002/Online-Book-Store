@@ -7,13 +7,13 @@ export function CartAndFav() {
 
             {/*Favourite*/}
             <div className={"w-1/2 flex cursor-pointer"}>
-                <img src={fav} alt="fav" className={"w-8 h-8 ml-3 mt-2"}/>
+                <img src={fav} alt="fav" className={"w-8 h-8 ml-12 mt-2"}/>
                 <h3 className={"ml-2"}>0</h3>
             </div>
 
             {/*Cart*/}
             <div className={"w-1/2 flex cursor-pointer"}>
-                <img src={cart} alt="cart" className={"w-8 h-8 mt-2"}/>
+                <img src={cart} alt="cart" className={"w-8 h-8 ml-5 mt-2"}/>
                 <h3 className={"ml-2"}>0</h3>
             </div>
         </section>

@@ -18,7 +18,7 @@ function App() {
         <>
             <NavBar></NavBar>
             <CartAndFav></CartAndFav>
-            {/*<Home></Home>*/}
+            <Home></Home>
             {/*<About></About>*/}
             {/*<Contact></Contact>*/}
             {/*<Product></Product>*/}
