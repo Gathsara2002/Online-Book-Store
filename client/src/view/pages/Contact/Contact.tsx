@@ -1,6 +1,6 @@
 export const Contact = () => {
     return (
-        <section className={"container mt-36 mb-20 flex justify-around"}>
+        <section className={"container pt-36 pb-20 flex justify-around bg-slate-100"}>
 
             <div className="bg-white w-10/12 shadow-lg shadow-gray-400 border border-black rounded-lg">
                 <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
@@ -16,7 +16,7 @@ export const Contact = () => {
                                 email</label>
                             <input type="email" id="email"
                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
-                                   placeholder="name@flowbite.com" required/>
+                                   placeholder="abcd@gmail.com" required/>
                         </div>
                         <div>
                             <label htmlFor="subject"
