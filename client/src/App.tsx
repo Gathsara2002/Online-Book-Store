@@ -16,18 +16,18 @@ import {WishList} from "./view/pages/WishList/WishList";
 function App() {
     return (
         <>
-            {/*<NavBar></NavBar>*/}
-            {/*<CartAndFav></CartAndFav>*/}
+            <NavBar></NavBar>
+            <CartAndFav></CartAndFav>
             {/*<Home></Home>*/}
             {/*<About></About>*/}
             {/*<Contact></Contact>*/}
             {/*<Product></Product>*/}
-            {/*<Footer></Footer>*/}
             {/*<Login></Login>*/}
-            <Signup></Signup>
-            {/*<ItemTemplate></ItemTemplate>*/}
+            {/*<Signup></Signup>*/}
+            <ItemTemplate></ItemTemplate>
             {/*<CartPage></CartPage>*/}
             {/*<WishList></WishList>*/}
+            <Footer></Footer>
         </>
     );
 }
