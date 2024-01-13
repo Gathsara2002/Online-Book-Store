@@ -18,8 +18,8 @@ function App() {
         <>
             <NavBar></NavBar>
             <CartAndFav></CartAndFav>
-            <Home></Home>
-            {/*<About></About>*/}
+            {/*<Home></Home>*/}
+            <About></About>
             {/*<Contact></Contact>*/}
             {/*<Product></Product>*/}
             <Footer></Footer>

@@ -2,16 +2,16 @@ import aboutImg from '../../../assests/images/about.jpg';
 
 export const About = () => {
     return (
-        <section>
+        <section className={"bg-slate-100"}>
 
             <section className={"container mt-20 flex"}>
                 {/*image*/}
-                <div className={"w-1/2 h-auto border border-black flex justify-center"}>
+                <div className={"w-1/2 h-auto flex justify-center"}>
                     <img src={aboutImg} alt="aboutImage" className={"w-2/3 mt-20"}/>
                 </div>
 
                 {/*description*/}
-                <div className={"w-1/2 h-auto border border-yellow-400"}>
+                <div className={"w-1/2 h-auto"}>
 
                     <h1 className={"mt-28 ml-10 text-5xl font-bold"}>
                         Find Your Favourite
@@ -27,19 +27,19 @@ export const About = () => {
                         discussions. Join us in exploring the world of literature!
                     </p>
 
-                    <div className={"ml-10 mt-16 border border-black w-5/6 h-auto flex justify-between"}>
+                    <div className={"ml-10 mt-16 w-5/6 h-auto flex justify-between"}>
 
-                        <div className={"border border-green-400 w-1/4"}>
+                        <div className={"w-1/4"}>
                             <h2 className={"text-2xl font-bold"}>1000+</h2>
                             <p className={"text-[16px]"}>Book Listing</p>
                         </div>
 
-                        <div className={"border border-green-400 w-1/4"}>
+                        <div className={"w-1/4"}>
                             <h2 className={"text-2xl font-bold"}>4000+</h2>
                             <p className={"text-[16px]"}>Register Users</p>
                         </div>
 
-                        <div className={"border border-green-400 w-1/4"}>
+                        <div className={"w-1/4"}>
                             <h2 className={"text-2xl font-bold"}>1200+</h2>
                             <p className={"text-[16px]"}>PDF Downloaded</p>
                         </div>
@@ -50,13 +50,13 @@ export const About = () => {
 
             </section>
 
-            <h1 className={"text-center text-3xl font-bold mt-32"}>Our Customers</h1>
+            <h1 className={"text-center text-4xl font-bold mt-32"}>Our Customers</h1>
 
             {/*reviews*/}
-            <section className={"container mt-16 flex justify-evenly mb-16"}>
+            <section className={"container mt-16 flex justify-evenly pb-16"}>
 
                 {/*review 1*/}
-                <div className="flex items-start w-1/4 border rounded  shadow-lg shadow-gray-400 p-4">
+                <div className="flex items-start w-1/4 border rounded  shadow-lg shadow-gray-400 p-4 bg-white">
                     <div className="flex-shrink-0">
                         <div className="inline-block relative">
                             <div className="relative w-16 h-16 rounded-full overflow-hidden">
@@ -180,7 +180,7 @@ export const About = () => {
                 </div>
 
                 {/*review 2*/}
-                <div className="flex items-start w-1/4 border rounded  shadow-lg shadow-gray-400 p-4">
+                <div className="flex items-start w-1/4 border rounded  shadow-lg shadow-gray-400 p-4 bg-white">
                     <div className="flex-shrink-0">
                         <div className="inline-block relative">
                             <div className="relative w-16 h-16 rounded-full overflow-hidden">
@@ -304,7 +304,7 @@ export const About = () => {
                 </div>
 
                 {/*review 3*/}
-                <div className="flex items-start w-1/4 border rounded  shadow-lg shadow-gray-400 p-4">
+                <div className="flex items-start w-1/4 border rounded  shadow-lg shadow-gray-400 p-4 bg-white">
                     <div className="flex-shrink-0">
                         <div className="inline-block relative">
                             <div className="relative w-16 h-16 rounded-full overflow-hidden">
