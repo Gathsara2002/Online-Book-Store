@@ -1,6 +1,6 @@
 export const Signup = () => {
     return (
-        <section className={"container"}>
+        <section className={"container bg-slate-100"}>
             <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
 
                 <div

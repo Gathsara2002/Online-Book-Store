@@ -23,8 +23,8 @@ function App() {
             {/*<Contact></Contact>*/}
             {/*<Product></Product>*/}
             {/*<Footer></Footer>*/}
-            <Login></Login>
-            {/*<Signup></Signup>*/}
+            {/*<Login></Login>*/}
+            <Signup></Signup>
             {/*<ItemTemplate></ItemTemplate>*/}
             {/*<CartPage></CartPage>*/}
             {/*<WishList></WishList>*/}
