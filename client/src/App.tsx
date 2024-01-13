@@ -24,8 +24,8 @@ function App() {
             {/*<Product></Product>*/}
             {/*<Login></Login>*/}
             {/*<Signup></Signup>*/}
-            <ItemTemplate></ItemTemplate>
-            {/*<CartPage></CartPage>*/}
+            {/*<ItemTemplate></ItemTemplate>*/}
+            <CartPage></CartPage>
             {/*<WishList></WishList>*/}
             <Footer></Footer>
         </>
