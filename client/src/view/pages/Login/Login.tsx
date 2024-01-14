@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 export const Login = () => {
     return (
         <section className={"container bg-slate-100"}>
@@ -46,11 +48,7 @@ export const Login = () => {
                     <p className="mt-8 text-xs font-light text-center text-gray-700">
                         {" "}
                         Don't have an account?{" "}
-                        <a
-                            href="#"
-                            className="font-medium text-purple-600 hover:underline">
-                            Sign up
-                        </a>
+                        <Link to={"/signup"} className={"font-medium text-purple-600 hover:underline"}>Sign up</Link>
                     </p>
                 </div>
             </div>
