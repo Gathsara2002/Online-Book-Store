@@ -12,12 +12,13 @@ import {Signup} from "./view/pages/Signup/Signup";
 import {ItemTemplate} from "./view/common/ItemTemplate/ItemTemplate";
 import {CartPage} from "./view/pages/CartPage/CartPage";
 import {WishList} from "./view/pages/WishList/WishList";
+import {DefaultView} from "./view/common/DefaultView/DefaultView";
 
 function App() {
     return (
         <>
-            <NavBar></NavBar>
-            <CartAndFav></CartAndFav>
+            {/*<NavBar></NavBar>*/}
+            {/*<CartAndFav></CartAndFav>*/}
             {/*<Home></Home>*/}
             {/*<About></About>*/}
             {/*<Contact></Contact>*/}
@@ -26,8 +27,9 @@ function App() {
             {/*<Signup></Signup>*/}
             {/*<ItemTemplate></ItemTemplate>*/}
             {/*<CartPage></CartPage>*/}
-            <WishList></WishList>
-            <Footer></Footer>
+            {/*<WishList></WishList>*/}
+            {/*<Footer></Footer>*/}
+            <DefaultView></DefaultView>
         </>
     );
 }
