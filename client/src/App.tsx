@@ -33,6 +33,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path={"/*"} Component={DefaultView}> </Route>
+                    <Route path={"/login"} Component={Login}> </Route>
                 </Routes>
             </BrowserRouter>
         </>
