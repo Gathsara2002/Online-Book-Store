@@ -34,6 +34,7 @@ function App() {
                 <Routes>
                     <Route path={"/*"} Component={DefaultView}> </Route>
                     <Route path={"/login"} Component={Login}> </Route>
+                    <Route path={"/signup"} Component={Signup}> </Route>
                 </Routes>
             </BrowserRouter>
         </>
