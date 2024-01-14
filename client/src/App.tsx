@@ -13,6 +13,7 @@ import {ItemTemplate} from "./view/common/ItemTemplate/ItemTemplate";
 import {CartPage} from "./view/pages/CartPage/CartPage";
 import {WishList} from "./view/pages/WishList/WishList";
 import {DefaultView} from "./view/common/DefaultView/DefaultView";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 function App() {
     return (
@@ -29,7 +30,11 @@ function App() {
             {/*<CartPage></CartPage>*/}
             {/*<WishList></WishList>*/}
             {/*<Footer></Footer>*/}
-            <DefaultView></DefaultView>
+            <BrowserRouter>
+                <Routes>
+                    <Route path={"/*"} Component={DefaultView}> </Route>
+                </Routes>
+            </BrowserRouter>
         </>
     );
 }

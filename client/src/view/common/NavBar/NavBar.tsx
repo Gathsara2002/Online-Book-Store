@@ -1,4 +1,5 @@
 import logo from '../../../assests/icons/logo.png';
+import {Link} from "react-router-dom";
 
 export function NavBar() {
     return (
@@ -10,10 +11,23 @@ export function NavBar() {
 
             {/*navigation items*/}
             <ul className="flex w-1/2 text-center items-center justify-evenly text-[20px] font-serif mx-auto">
-                <li className={"cursor-pointer hover:text-[#f53b57] hover:scale-110 transition-all"}>Home</li>
-                <li className={"cursor-pointer hover:text-[#f53b57] hover:scale-110 transition-all"}>About</li>
-                <li className={"cursor-pointer hover:text-[#f53b57] hover:scale-110 transition-all"}>Shop</li>
-                <li className={"cursor-pointer hover:text-[#f53b57] hover:scale-110 transition-all"}>Contact</li>
+
+                <li className={"cursor-pointer hover:text-[#f53b57] hover:scale-110 transition-all"}>
+                    <Link to={"/"}>Home</Link>
+                </li>
+
+                <li className={"cursor-pointer hover:text-[#f53b57] hover:scale-110 transition-all"}>
+                    <Link to={"/about"}>About</Link>
+                </li>
+
+                <li className={"cursor-pointer hover:text-[#f53b57] hover:scale-110 transition-all"}>
+                    <Link to={"/shop"}>Shop</Link>
+                </li>
+
+                <li className={"cursor-pointer hover:text-[#f53b57] hover:scale-110 transition-all"}>
+                    <Link to={"/contact"}>Contact</Link>
+                </li>
+
             </ul>
 
             {/*login and sign up buttons*/}
