@@ -7,6 +7,8 @@ import React from "react";
 import {About} from "../../pages/About/About";
 import {Product} from "../../pages/Product/Product";
 import {Contact} from "../../pages/Contact/Contact";
+import {CartPage} from "../../pages/CartPage/CartPage";
+import {WishList} from "../../pages/WishList/WishList";
 
 export const DefaultView = () => {
     return (
@@ -18,6 +20,8 @@ export const DefaultView = () => {
                 <Route path={"/about"} Component={About}> </Route>
                 <Route path={"/shop"} Component={Product}> </Route>
                 <Route path={"/contact"} Component={Contact}> </Route>
+                <Route path={"/cart"} Component={CartPage}> </Route>
+                <Route path={"/wishlist"} Component={WishList}> </Route>
             </Routes>
             <Footer></Footer>
         </>
