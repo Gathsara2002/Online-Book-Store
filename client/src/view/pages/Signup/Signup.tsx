@@ -1,4 +1,34 @@
+import React, {useState} from "react";
+
 export const Signup = () => {
+
+    //This useState hook for gathering input data
+    const [inputData, setInputData] = useState({
+        'userId': '',
+        'name': '',
+        'address': '',
+        'contact': '',
+        'email': '',
+        'username': '',
+        'password': ''
+    });
+
+    //handle input data
+    const handleInputData = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        const {name, value} = e.target;
+        setInputData({
+            ...inputData,
+            [name]: value
+        })
+    }
+
+    //submit button action
+    const handleSubmit = () => {
+        console.log(inputData);
+    };
+
+
     return (
         <section className={"container bg-slate-100"}>
             <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
@@ -18,6 +48,8 @@ export const Signup = () => {
                             </label>
                             <input
                                 type="text"
+                                name='name'
+                                onChange={handleInputData}
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"/>
                         </div>
                         <div className="mb-2">
@@ -28,6 +60,8 @@ export const Signup = () => {
                             </label>
                             <input
                                 type="text"
+                                name='address'
+                                onChange={handleInputData}
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"/>
                         </div>
                         <div className="mb-2">
@@ -38,6 +72,8 @@ export const Signup = () => {
                             </label>
                             <input
                                 type="number"
+                                name='contact'
+                                onChange={handleInputData}
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"/>
                         </div>
                         <div className="mb-2">
@@ -48,6 +84,8 @@ export const Signup = () => {
                             </label>
                             <input
                                 type="email"
+                                name='email'
+                                onChange={handleInputData}
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"/>
                         </div>
                         <div className="mb-2">
@@ -58,6 +96,8 @@ export const Signup = () => {
                             </label>
                             <input
                                 type="text"
+                                name='username'
+                                onChange={handleInputData}
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"/>
                         </div>
                         <div className="mb-2">
@@ -68,11 +108,13 @@ export const Signup = () => {
                             </label>
                             <input
                                 type="password"
+                                name='password'
+                                onChange={handleInputData}
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"/>
                         </div>
                         <div className="mt-6">
-                            <button
-                                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+                            <button onClick={handleSubmit}
+                                    className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
                                 Sign Up
                             </button>
                         </div>
