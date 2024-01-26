@@ -1,4 +1,5 @@
 import profile from '../../../assests/icons/profile.png';
+
 export const AdminDashboard = () => {
     return (
         <div>
@@ -50,7 +51,7 @@ export const AdminDashboard = () => {
             </div>
 
             {/*nav bar*/}
-            <div className={"absolute top-0 right-0 w-5/6"}>
+            <div className={"absolute top-0 right-0 w-5/6 z-10"}>
                 {/*nav bar*/}
                 <nav className="flex justify-between items-center bg-gray-800 text-white p-4">
                     <div className="w-1/3 m-auto">
@@ -71,6 +72,9 @@ export const AdminDashboard = () => {
                     </div>
                 </nav>
             </div>
+
+            {/*display content*/}
+            <div className={"absolute bottom-0 right-0 w-5/6 bg-yellow-300 h-[666px]"}></div>
 
         </div>
     );
