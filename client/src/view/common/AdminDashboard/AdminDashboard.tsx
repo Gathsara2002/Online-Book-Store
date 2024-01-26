@@ -1,8 +1,10 @@
+import profile from '../../../assests/icons/profile.png';
 export const AdminDashboard = () => {
     return (
         <div>
+
             {/*This dashboard sidebar*/}
-            <div className="bg-gray-800 text-white h-screen w-64 flex flex-col">
+            <div className="bg-gray-800 text-white h-screen  flex flex-col w-1/6">
                 <div className="p-4 mt-4">
                     <span className="text-2xl font-bold">Chapter</span>
                     <span className="text-2xl font-bold text-green-500">ONE</span>
@@ -45,6 +47,29 @@ export const AdminDashboard = () => {
                         </a>
                     </li>
                 </ul>
+            </div>
+
+            {/*nav bar*/}
+            <div className={"absolute top-0 right-0 w-5/6"}>
+                {/*nav bar*/}
+                <nav className="flex justify-between items-center bg-gray-800 text-white p-4">
+                    <div className="w-1/3 m-auto">
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            className="px-3 py-2 w-full bg-gray-700 text-white rounded-md outline-none focus:bg-gray-600"
+                        />
+                        <i className="bx bx-search text-xl"></i>
+                    </div>
+                    <div className="profile-details flex items-center">
+                        <img
+                            src={profile}
+                            alt="Profile"
+                            className="w-8 h-8 rounded-full mr-2"
+                        />
+                        <span className="admin_name text-lg">Admin</span>
+                    </div>
+                </nav>
             </div>
 
         </div>
