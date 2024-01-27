@@ -1,5 +1,7 @@
 import profile from '../../../assests/icons/profile.png';
 import {Dashboard} from "../../pages/AdminPages/Dashboard/Dashboard";
+import {Product} from "../../pages/Product/Product";
+import {Products} from "../../pages/AdminPages/Products/Products";
 
 
 export const AdminDashboard = () => {
@@ -77,7 +79,8 @@ export const AdminDashboard = () => {
 
             {/*main content*/}
             <div>
-                <Dashboard></Dashboard>
+                {/*<Dashboard></Dashboard>*/}
+               <Products></Products>
             </div>
 
         </div>
