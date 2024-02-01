@@ -16,7 +16,9 @@ function App() {
             {/*        <Route path={"/signup"} Component={Signup}> </Route>*/}
             {/*    </Routes>*/}
             {/*</BrowserRouter>*/}
-            <AdminDashboard></AdminDashboard>
+            <BrowserRouter>
+                <AdminDashboard></AdminDashboard>
+            </BrowserRouter>
         </>
     );
 }

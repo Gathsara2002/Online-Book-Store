@@ -2,6 +2,7 @@ import profile from '../../../assests/icons/profile.png';
 import {Dashboard} from "../../pages/AdminPages/Dashboard/Dashboard";
 import {Product} from "../../pages/Product/Product";
 import {Products} from "../../pages/AdminPages/Products/Products";
+import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 
 
 export const AdminDashboard = () => {
@@ -16,40 +17,40 @@ export const AdminDashboard = () => {
                 </div>
                 <ul className="flex-1">
                     <li className="p-4 border-b border-gray-700">
-                        <a href="#" className="flex items-center">
-                            <i className="bx bx-grid-alt text-xl mr-2"></i>
+                        <Link to={"/admin"} className="flex items-center">
+                            <i className="text-xl mr-2"></i>
                             <span className="text-lg">Dashboard</span>
-                        </a>
+                        </Link>
                     </li>
                     <li className="p-4 border-b border-gray-700">
-                        <a href="#" className="flex items-center">
-                            <i className="bx bxs-user text-xl mr-2"></i>
+                        <Link to={"/admin/customer"} className="flex items-center">
+                            <i className="text-xl mr-2"></i>
                             <span className="text-lg">Manage Customers</span>
-                        </a>
+                        </Link>
                     </li>
                     <li className="p-4 border-b border-gray-700">
-                        <a href="#" className="flex items-center">
-                            <i className="bx bx-user-circle text-xl mr-2"></i>
+                        <Link to={"/admin/products"} className="flex items-center">
+                            <i className="text-xl mr-2"></i>
                             <span className="text-lg">Manage Products</span>
-                        </a>
+                        </Link>
                     </li>
                     <li className="p-4 border-b border-gray-700">
-                        <a href="#" className="flex items-center">
-                            <i className="bx bx-car text-xl mr-2"></i>
+                        <Link to={"/admin/orders"} className="flex items-center">
+                            <i className="text-xl mr-2"></i>
                             <span className="text-lg">Manage Orders</span>
-                        </a>
+                        </Link>
                     </li>
                     <li className="p-4 border-b border-gray-700">
-                        <a href="#" className="flex items-center">
-                            <i className="bx bxs-arrow-to-left text-xl mr-2"></i>
-                            <span className="text-lg">Manage Payment</span>
-                        </a>
+                        <Link to={"/admin/payment"} className="flex items-center">
+                            <i className="text-xl mr-2"></i>
+                            <span className="text-lg">Manage Payments</span>
+                        </Link>
                     </li>
                     <li className="p-4 mt-72">
-                        <a href="#" className="flex items-center">
-                            <i className="bx bx-log-out text-xl mr-2"></i>
-                            <span className="text-lg">Log out</span>
-                        </a>
+                        <Link to={"/"} className="flex items-center">
+                            <i className="text-xl mr-2"></i>
+                            <span className="text-lg">Log Out</span>
+                        </Link>
                     </li>
                 </ul>
             </div>
@@ -79,8 +80,10 @@ export const AdminDashboard = () => {
 
             {/*main content*/}
             <div>
-                {/*<Dashboard></Dashboard>*/}
-               <Products></Products>
+                <Routes>
+                    <Route path={"admin/"} Component={Dashboard}></Route>
+                    <Route path={"admin/products"} Component={Products}></Route>
+                </Routes>
             </div>
 
         </div>
