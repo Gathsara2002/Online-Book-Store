@@ -9,16 +9,16 @@ import {AdminDashboard} from "./view/common/AdminDashboard/AdminDashboard";
 function App() {
     return (
         <>
-            {/*<BrowserRouter>*/}
-            {/*    <Routes>*/}
-            {/*        <Route path={"/*"} Component={DefaultView}> </Route>*/}
-            {/*        <Route path={"/login"} Component={Login}> </Route>*/}
-            {/*        <Route path={"/signup"} Component={Signup}> </Route>*/}
-            {/*    </Routes>*/}
-            {/*</BrowserRouter>*/}
             <BrowserRouter>
-                <AdminDashboard></AdminDashboard>
+                <Routes>
+                    <Route path={"/*"} Component={DefaultView}> </Route>
+                    <Route path={"/login"} Component={Login}> </Route>
+                    <Route path={"/signup"} Component={Signup}> </Route>
+                </Routes>
             </BrowserRouter>
+            {/*<BrowserRouter>*/}
+            {/*    <AdminDashboard></AdminDashboard>*/}
+            {/*</BrowserRouter>*/}
         </>
     );
 }
