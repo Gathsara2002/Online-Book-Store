@@ -1,8 +1,7 @@
 import profile from '../../../assests/icons/profile.png';
 import {Dashboard} from "../../pages/AdminPages/Dashboard/Dashboard";
-import {Product} from "../../pages/Product/Product";
 import {Products} from "../../pages/AdminPages/Products/Products";
-import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
+import {Link, Route, Routes} from "react-router-dom";
 
 
 export const AdminDashboard = () => {
@@ -81,8 +80,8 @@ export const AdminDashboard = () => {
             {/*main content*/}
             <div>
                 <Routes>
-                    <Route path={"admin/"} Component={Dashboard}></Route>
-                    <Route path={"admin/products"} Component={Products}></Route>
+                    <Route path={"/admin"} Component={Dashboard}></Route>
+                    <Route path={"/admin/products"} Component={Products}></Route>
                 </Routes>
             </div>
 

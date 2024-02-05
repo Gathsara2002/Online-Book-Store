@@ -1,5 +1,3 @@
-import {Link} from "react-router-dom";
-
 export const Products = () => {
     return (
         <div className={"absolute top-16 right-0 w-5/6"}>

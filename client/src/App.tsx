@@ -14,11 +14,9 @@ function App() {
                     <Route path={"/*"} Component={DefaultView}> </Route>
                     <Route path={"/login"} Component={Login}> </Route>
                     <Route path={"/signup"} Component={Signup}> </Route>
+                    <Route path={"/admin"} Component={AdminDashboard}> </Route>
                 </Routes>
             </BrowserRouter>
-            {/*<BrowserRouter>*/}
-            {/*    <AdminDashboard></AdminDashboard>*/}
-            {/*</BrowserRouter>*/}
         </>
     );
 }
