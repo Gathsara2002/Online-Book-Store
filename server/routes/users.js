@@ -3,9 +3,9 @@ var router = express.Router();
 let user = require('../controller/UserController');
 
 /* GET users listing. */
-router.get();
+router.get('/', user.getUsers);
 
 // save user
-router.post('/save',user.saveUser);
+router.post('/save', user.saveUser);
 
 module.exports = router;
