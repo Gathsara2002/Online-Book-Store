@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import api from "../../../axios/axios";
 
 export const Signup = () => {
 
@@ -24,8 +25,33 @@ export const Signup = () => {
     }
 
     //submit button action
-    const handleSubmit = () => {
+    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
         console.log(inputData);
+
+        let newUser = {
+            userId: "U005",
+            name: inputData.name,
+            address: inputData.address,
+            contact: inputData.contact,
+            email: inputData.email,
+            username: inputData.username,
+            password: inputData.password
+        }
+
+        //send request
+        try {
+            api
+                .post('/user/save', newUser)
+                .then((res: any) => {
+                    console.log("Response from API:", res);
+                    alert("Added new user successfully ! " + res);
+                })
+                .catch(error => alert(error));
+        } catch (error) {
+            console.error('Error submitting data:', error);
+        }
+
     };
 
 
@@ -39,7 +65,7 @@ export const Signup = () => {
                         Sign Up
                     </h1>
 
-                    <form className="mt-6">
+                    <form  className="mt-6">
                         <div className="mb-2">
                             <label
                                 htmlFor="name"
