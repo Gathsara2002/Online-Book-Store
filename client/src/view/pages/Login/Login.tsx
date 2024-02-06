@@ -1,5 +1,5 @@
-import {Link, Route, Routes, useNavigate} from "react-router-dom";
-import React, {useRef, useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import React, {useState} from "react";
 
 
 export const Login = () => {
@@ -7,6 +7,8 @@ export const Login = () => {
         //this states for username,password
         const [username, setUsername] = useState('');
         const [password, setPassword] = useState('');
+
+        //use for dynamic url change
         let navigate = useNavigate();
 
 
