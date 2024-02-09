@@ -7,7 +7,7 @@ const UserController = {
         try {
 
             const allUsers = await model.find();
-            console.log(allUsers.toString());
+            console.log(allUsers);
             res.status(200).json(allUsers);
 
         } catch (e) {
