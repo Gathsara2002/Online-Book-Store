@@ -8,4 +8,13 @@ router.get('/', user.getUsers);
 // save user
 router.post('/save', user.saveUser);
 
+//update user
+router.put('/update');
+
+//delete user
+router.delete('/delete');
+
+//search user
+router.get('/find')
+
 module.exports = router;
