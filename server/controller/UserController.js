@@ -31,6 +31,18 @@ const UserController = {
                 error: "User is not saved " + err
             });
         }
+    },
+
+    //delete user
+    deleteUser: async function (req, res, next) {
+    },
+
+    //update user
+    updateUser: async function (req, res, next) {
+    },
+
+    //search user
+    searchUser: async function (req, res, next) {
     }
 
 }
