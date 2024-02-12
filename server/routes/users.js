@@ -9,12 +9,12 @@ router.get('/', user.getUsers);
 router.post('/save', user.saveUser);
 
 //update user
-router.put('/update');
+router.put('/update', user.updateUser);
 
 //delete user
-router.delete('/delete');
+router.delete('/delete', user.deleteUser);
 
 //search user
-router.get('/find')
+router.get('/find', user.searchUser)
 
 module.exports = router;
