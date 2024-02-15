@@ -8,6 +8,7 @@ const cors = require('cors');
 
 var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
+var bookRouter = require('./routes/book');
 
 var app = express();
 
@@ -26,6 +27,7 @@ db().then(r => console.log("DB is ready"));
 
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
+app.use('/book', bookRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
