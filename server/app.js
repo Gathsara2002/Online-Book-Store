@@ -9,6 +9,7 @@ const cors = require('cors');
 var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
 var bookRouter = require('./routes/book');
+var orderRouter = require('./routes/order');
 
 var app = express();
 
@@ -23,11 +24,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors());
+//db connection
 db().then(r => console.log("DB is ready"));
 
+//manage routes
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/book', bookRouter);
+app.use('/order', orderRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
