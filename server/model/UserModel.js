@@ -39,5 +39,5 @@ const UserModel = mongoose.Schema({
     }
 );
 
-let user = mongoose.model('User',UserModel);
-module.exports=user;
+let user = mongoose.model('User', UserModel);
+module.exports = user;
