@@ -2,7 +2,7 @@ import aboutImg from '../../../assests/images/about.jpg';
 
 export const About = () => {
     return (
-        <section className={"bg-slate-100"}>
+        <section className={"bg-slate-100 w-[100%]"}>
 
             <section className={"container mt-20 flex"}>
                 {/*image*/}

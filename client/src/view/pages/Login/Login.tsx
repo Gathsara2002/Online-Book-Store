@@ -27,7 +27,7 @@ export const Login = () => {
 
 
         return (
-            <section className={"container bg-slate-100"}>
+            <section className={"w-[100%] bg-slate-100"}>
                 <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
                     <div
                         className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-purple-600 lg:max-w-xl">

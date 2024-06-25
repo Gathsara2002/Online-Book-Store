@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 export function NavBar() {
     return (
         <section
-            className={"container flex w-full h-20 align-middle fixed items-center top-0 right-0 bg-white shadow-lg shadow-gray-400 z-50"}>
+            className={"flex w-screen h-20 align-middle fixed items-center top-0 bg-white shadow-lg shadow-gray-400 z-50"}>
 
             {/*This is nav bar icon*/}
             <img src={logo} alt="logo" className={"rounded w-28 h-16 object-contain ml-10"}/>

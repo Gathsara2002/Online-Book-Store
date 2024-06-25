@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 export const Product = () => {
     return (
-        <section className={"container pt-20 pb-20 bg-slate-100"}>
+        <section className={"w-[100%] pt-20 pb-20 bg-slate-100"}>
 
             {/*top menu*/}
             <div className={"flex mt-16 ml-10 pb-3 h-14"}>

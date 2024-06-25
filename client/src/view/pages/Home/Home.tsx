@@ -3,7 +3,7 @@ import cover from '../../../assests/images/cover.jpg';
 export const Home = () => {
     return (
         // home section
-        <section className={"container mt-[80px]"}>
+        <section className={"w-[100%] mt-[80px]"}>
 
             {/*outer container*/}
             <div className={"flex h-auto bg-[#def9fc] pb-14"}>

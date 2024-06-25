@@ -3,8 +3,8 @@ import user from "../../../../assests/icons/user.png";
 
 export const Dashboard = () => {
     return (
-        <div className={"absolute bottom-0 right-0 bg-slate-100 w-5/6 h-[666px]"}>
-            <div className={"m-10 h-[586px]"}>
+        <div>
+            <div className={"m-10 h-auto"}>
                 <div className={"flex items-center justify-between flex-wrap px-5 mb-[26px]"}>
                     <div
                         className={"flex items-center justify-center  w-1/4 bg-white p-[14px] m-5 rounded-2xl shadow shadow-gray-400"}>

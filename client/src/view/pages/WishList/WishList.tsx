@@ -2,7 +2,7 @@ import img from "../../../assests/images/about.jpg";
 
 export const WishList = () => {
     return (
-        <section className={"container pt-32 pb-32 bg-slate-100"}>
+        <section className={"w-[100%] pt-32 pb-32 bg-slate-100"}>
             <div>
                 <h1 className={"text-3xl font-bold ml-20"}>Your WishList</h1>
 

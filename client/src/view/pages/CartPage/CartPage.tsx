@@ -2,7 +2,7 @@ import img from '../../../assests/images/about.jpg';
 
 export const CartPage = () => {
     return (
-        <section className={"container pt-32 pb-28 bg-slate-100"}>
+        <section className={"w-[100%] pt-32 pb-28 bg-slate-100"}>
             <div className={"ml-10"}>
                 <h1 className={"text-3xl font-bold "}>Your Cart Items</h1>
 

@@ -1,6 +1,6 @@
 export const Contact = () => {
     return (
-        <section className={"container pt-36 pb-20 flex justify-around bg-slate-100"}>
+        <section className={"w-[100%] pt-36 pb-20 flex justify-around bg-slate-100"}>
 
             <div className="bg-white w-10/12 shadow-lg shadow-gray-400 border border-black rounded-lg">
                 <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">

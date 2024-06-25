@@ -1,6 +1,6 @@
 export const Footer = () => {
     return (
-        <section className={"container"}>
+        <section className={"w-[100%]"}>
             <footer
                 className="bg-gray-800 text-center text-white lg:text-left">
                 <div
