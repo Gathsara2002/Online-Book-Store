@@ -1,4 +1,5 @@
 const model = require('../model/UserModel');
+const nodemailer = require('nodemailer');
 
 const UserController = {
 
@@ -25,6 +26,7 @@ const UserController = {
             console.log(body);
             let promise = await model.create(body);
             res.status(200).json(promise);
+            await this.SendMail(req.body);
 
         } catch (err) {
             res.status(500).json({
@@ -97,6 +99,33 @@ const UserController = {
                 error: "Something went wrong ! " + error
             });
         }
+    },
+
+    //send signup mail
+    SendMail: async function (mail) {
+
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'liviru2002mmg@gmail.com',
+                pass: 'mm2002gl'
+            }
+        });
+
+        let mailOptions = {
+            from: 'liviru2002mmg@gmail.com',
+            to: mail,
+            subject: 'Welcome to ChapterOne',
+            text: 'Hello world!',
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message sent: %s', info.messageId);
+        });
+
     }
 
 }
