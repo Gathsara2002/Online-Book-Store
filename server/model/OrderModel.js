@@ -15,15 +15,31 @@ const orderModel = mongoose.Schema({
     "totalItems": {
         require: true,
         type: Number,
+        min: 0
     },
     "total": {
         require: true,
         type: Number,
+        min: 0
     },
     "customerId": {
         require: true,
         type: String,
     },
+    "orderDetails": {
+        require: true,
+        type: [{
+            bookName: {
+                type: String,
+                required: true
+            },
+            price: {
+                type: Number,
+                required: true,
+                min: 0
+            }
+        }]
+    }
 }, {
     version: false
 });
