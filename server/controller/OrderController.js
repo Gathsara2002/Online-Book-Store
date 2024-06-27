@@ -20,6 +20,7 @@ const OrderController = {
     saveOrder: async function (req, res, next) {
         try {
             let body = req.body;
+            body.orderId = await this.generateNewOrderId();
             console.log(body);
             let promise = await model.create(body);
             res.status(200).json(promise);
@@ -73,6 +74,23 @@ const OrderController = {
             res.status(500).json({
                 error: "Something went wrong ! " + error
             });
+        }
+    },
+
+    generateNewOrderId: async function () {
+        try {
+            // Fetch all existing order IDs
+            const orders = await model.find({}, {orderId: 1});
+            const existingIds = orders.map(order => order.orderId);
+
+            // Extract numeric parts and find the maximum
+            const numericParts = existingIds.map(id => parseInt(id));
+            const maxNumericPart = Math.max(...numericParts);
+
+            // Generate new ID
+            return (maxNumericPart + 1).toString().padStart(3, '0');
+        } catch (error) {
+            throw new Error("Could not generate new order ID: " + error.message);
         }
     }
 

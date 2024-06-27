@@ -21,8 +21,7 @@ const BookController = {
         try {
             let body = req.body;
             if (!body.bookId) {
-                const {newId} = await this.generateNewBookId();
-                body.bookId = newId;
+                body.bookId = await this.generateNewBookId();
             }
             console.log(body);
             let promise = await model.create(body);
