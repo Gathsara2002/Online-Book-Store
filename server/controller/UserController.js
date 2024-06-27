@@ -47,7 +47,6 @@ const UserController = {
                     error: "User not found !"
                 });
             }
-
             res.status(200).json(user);
 
         } catch (error) {
