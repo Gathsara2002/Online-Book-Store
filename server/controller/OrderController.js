@@ -35,7 +35,7 @@ const OrderController = {
     deleteOrder: async function (req, res, next) {
         try {
             const id = req.params.id;
-            const order = await model.deleteOne({id: id});
+            const order = await model.deleteOne({orderId: id});
 
             if (order.deletedCount === 0) {
                 return res.status(404).json({
@@ -57,7 +57,7 @@ const OrderController = {
             const id = req.params.id;
             const body = req.body;
             const updatedOrder = await model.findOneAndUpdate({
-                    id: id,
+                    orderId: id,
                 }, body,
                 {new: true}
             );

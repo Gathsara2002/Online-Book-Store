@@ -35,7 +35,7 @@ const BookController = {
     deleteBook: async function (req, res, next) {
         try {
             const id = req.params.id;
-            const book = await model.deleteOne({id: id});
+            const book = await model.deleteOne({bookId: id});
 
             if (book.deletedCount === 0) {
                 return res.status(404).json({
@@ -57,7 +57,7 @@ const BookController = {
             const id = req.params.id;
             const body = req.body;
             const updatedBook = await model.findOneAndUpdate({
-                    id: id,
+                    bookId: id,
                 }, body,
                 {new: true}
             );
@@ -74,6 +74,11 @@ const BookController = {
                 error: "Something went wrong ! " + error
             });
         }
+    },
+
+    //generate new book id
+    generateNewBookId : async function (){
+
     }
 
 }

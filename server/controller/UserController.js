@@ -40,7 +40,7 @@ const UserController = {
         try {
 
             const id = req.params.id;
-            const user = await model.deleteOne({id: id});
+            const user = await model.deleteOne({userId: id});
 
             if (user.deletedCount === 0) {
                 return res.status(404).json({
@@ -65,7 +65,7 @@ const UserController = {
             const body = req.body;
 
             const updatedUser = await model.findOneAndUpdate({
-                    id: id,
+                    userId: id,
                 }, body,
                 {new: true}
             );
@@ -91,7 +91,7 @@ const UserController = {
         try {
 
             const id = req.params.id;
-            const user = await model.find({id: id});
+            const user = await model.find({userId: id});
             res.status(200).json(user);
 
         } catch (error) {
