@@ -20,13 +20,13 @@ const UserController = {
 
     //save user
     saveUser: async function (req, res, next) {
-        try {
 
+        try {
             let body = req.body;
+            body.userId = await this.generateNewUserId();
             console.log(body);
             let promise = await model.create(body);
             res.status(200).json(promise);
-            await this.SendMail(req.body);
 
         } catch (err) {
             res.status(500).json({
@@ -125,7 +125,24 @@ const UserController = {
             }
             console.log('Message sent: %s', info.messageId);
         });
+    },
 
+    generateNewUserId: async function () {
+        try {
+            // Fetch all existing user IDs
+            const users = await model.find({}, {userId: 1});
+            const existingIds = users.map(user => user.userId);
+
+            // Extract numeric parts and find the maximum
+            const numericParts = existingIds.map(id => parseInt(id.replace('U', '')));
+            const maxNumericPart = Math.max(...numericParts);
+
+            // Generate new ID
+            const newNumericPart = (maxNumericPart + 1).toString().padStart(3, '0');
+            return `U${newNumericPart}`;
+        } catch (error) {
+            throw new Error("Could not generate new user ID: " + error.message);
+        }
     }
 
 }
