@@ -20,10 +20,12 @@ const BookController = {
     saveBook: async function (req, res, next) {
         try {
             let body = req.body;
+            if (!body.bookId) {
+                const {newId} = await this.generateNewBookId();
+                body.bookId = newId;
+            }
             console.log(body);
             let promise = await model.create(body);
-            res.status(200).json(promise);
-
         } catch (err) {
             res.status(500).json({
                 error: "Book is not saved " + err
@@ -77,10 +79,32 @@ const BookController = {
     },
 
     //generate new book id
-    generateNewBookId : async function (){
+    generateNewBookId: async function (req, res, next) {
+        try {
+            // Fetch all existing book IDs
+            const books = await BookModel.find({}, {bookId: 1});
+            const existingIds = books.map(book => book.bookId);
 
+            // Extract numeric parts and find the maximum
+            const numericParts = existingIds.map(id => parseInt(id.replace('B', '')));
+            let maxNumericPart = Math.max(...numericParts);
+
+            // Check if maxNumericPart is -Infinity (i.e., no existing IDs found)
+            if (maxNumericPart === -Infinity) {
+                maxNumericPart = 0; // Start with 0 if no existing IDs
+            }
+
+            // Generate new ID
+            const newNumericPart = (maxNumericPart + 1).toString().padStart(3, '0');
+            const newId = `B${newNumericPart}`;
+
+            res.status(200).json({newId: newId});
+        } catch (error) {
+            res.status(500).json({
+                error: "Could not generate new book ID! " + error
+            });
+        }
     }
-
 }
 
 module.exports = BookController;
