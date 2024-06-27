@@ -5,8 +5,11 @@ let user = require('../controller/UserController');
 /* GET users listing. */
 router.get('/', user.getUsers);
 
-// save user
+// signup user
 router.post('/signup', user.signUpUser);
+
+//login user
+router.post('/login', user.loginUser);
 
 //update user
 router.put('/update/:id', user.updateUser);

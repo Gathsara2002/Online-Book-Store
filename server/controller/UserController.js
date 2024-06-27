@@ -34,7 +34,7 @@ const UserController = {
             res.status(200).json(promise, token);
 
         } catch (err) {
-            res.status(500).json({
+            res.status(401).json({
                 error: "User is not saved " + err
             });
         }
@@ -46,13 +46,13 @@ const UserController = {
             const {email, password} = req.body;
             const user = await this.findOne({email});
             if (!user) {
-                res.status(404).json({
+                res.status(401).json({
                     error: "Incorrect email"
                 });
             }
             const match = await compare(password, user.password);
             if (!match) {
-                res.status(404).json({
+                res.status(401).json({
                     error: "Incorrect password"
                 });
             }
@@ -60,7 +60,7 @@ const UserController = {
             res.status(200).json(token);
 
         } catch (err) {
-            res.status(500).json({
+            res.status(401).json({
                 error: "Login Failed" + err
             });
         }
