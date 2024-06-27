@@ -1,5 +1,5 @@
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 const createToken = (id) => {
     if (!process.env.SECRET) {
@@ -14,4 +14,4 @@ const hashingPassword = async (password) => {
     return bcrypt.hash(password, salt);
 };
 
-export default {createToken, hashingPassword};
+module.exports = {createToken, hashingPassword}

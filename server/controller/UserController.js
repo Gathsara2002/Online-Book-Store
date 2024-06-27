@@ -1,5 +1,8 @@
 const model = require('../model/UserModel');
 const nodemailer = require('nodemailer');
+const {hashingPassword, createToken} = require("./AuthController");
+const {compare} = require("bcrypt");
+
 
 const UserController = {
 
@@ -24,13 +27,41 @@ const UserController = {
         try {
             let body = req.body;
             body.userId = await this.generateNewUserId();
+            body.password = await hashingPassword(body.password);
             console.log(body);
             let promise = await model.create(body);
-            res.status(200).json(promise);
+            let token = createToken(body.userId);
+            res.status(200).json(promise, token);
 
         } catch (err) {
             res.status(500).json({
                 error: "User is not saved " + err
+            });
+        }
+    },
+
+    //login user
+    loginUser: async function (req, res, next) {
+        try {
+            const {email, password} = req.body;
+            const user = await this.findOne({email});
+            if (!user) {
+                res.status(404).json({
+                    error: "Incorrect email"
+                });
+            }
+            const match = await compare(password, user.password);
+            if (!match) {
+                res.status(404).json({
+                    error: "Incorrect password"
+                });
+            }
+            let token = createToken(user.userId);
+            res.status(200).json(token);
+
+        } catch (err) {
+            res.status(500).json({
+                error: "Login Failed" + err
             });
         }
     },
@@ -54,9 +85,10 @@ const UserController = {
                 error: "Something went wrong ! " + error
             });
         }
-    },
+    }
+    ,
 
-    //update user
+//update user
     updateUser: async function (req, res, next) {
         try {
 
@@ -83,9 +115,10 @@ const UserController = {
             });
         }
 
-    },
+    }
+    ,
 
-    //search user
+//search user
     searchUser: async function (req, res, next) {
         try {
 
@@ -98,9 +131,10 @@ const UserController = {
                 error: "Something went wrong ! " + error
             });
         }
-    },
+    }
+    ,
 
-    //send signup mail
+//send signup mail
     SendMail: async function (mail) {
 
         let transporter = nodemailer.createTransport({
@@ -124,7 +158,8 @@ const UserController = {
             }
             console.log('Message sent: %s', info.messageId);
         });
-    },
+    }
+    ,
 
     generateNewUserId: async function () {
         try {
