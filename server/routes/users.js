@@ -6,7 +6,7 @@ let user = require('../controller/UserController');
 router.get('/', user.getUsers);
 
 // save user
-router.post('/save', user.saveUser);
+router.post('/signup', user.signUpUser);
 
 //update user
 router.put('/update/:id', user.updateUser);

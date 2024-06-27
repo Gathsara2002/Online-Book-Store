@@ -19,7 +19,7 @@ const UserController = {
     },
 
     //save user
-    saveUser: async function (req, res, next) {
+    signUpUser: async function (req, res, next) {
 
         try {
             let body = req.body;
