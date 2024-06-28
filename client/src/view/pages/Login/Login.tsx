@@ -1,15 +1,17 @@
 import {Link, useNavigate} from "react-router-dom";
 import React, {useState} from "react";
+import api from "../../../axios/axios";
+import {useAuthContext} from "../../../hooks/useAuthContext";
 
 
 export const Login = () => {
 
+        const navigate = useNavigate();
+        const {dispatch} = useAuthContext();
+
         //this states for username,password
         const [username, setUsername] = useState('');
         const [password, setPassword] = useState('');
-
-        //use for dynamic url change
-        let navigate = useNavigate();
 
 
         //this method is for check login process
@@ -23,6 +25,28 @@ export const Login = () => {
             }
 
             //navigate to user
+
+        }
+
+        const handleUserLogin = () => {
+            try {
+                api
+                    .post('/user/login')
+                    .then((res: any) => {
+                        console.log("Response from API:", res);
+                        localStorage.setItem('COnetoken', JSON.stringify(res.data.token));
+                        dispatch({type: 'LOGIN', payload: res.data});
+                        alert("Login Success ! ");
+                        navigate('/');
+                    })
+                    .catch(error => {
+                        alert(error);
+                        console.log(error);
+                    });
+            } catch (error) {
+                console.error('Error submitting data:', error);
+            }
+
         }
 
 
