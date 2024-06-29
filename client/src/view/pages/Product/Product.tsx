@@ -1,7 +1,8 @@
 import aboutImg from '../../../assests/images/about.jpg';
 import {Link} from "react-router-dom";
 import api from "../../../axios/axios";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
+import {CartContext} from "../../../context/CartContext";
 
 export const Product = () => {
 
@@ -15,6 +16,7 @@ export const Product = () => {
         view: string;
     }
 
+    const { cartItems, setCartItems } = useContext(CartContext);
     const [allBooks, setAllBooks] = useState([]);
 
     //get data
@@ -39,6 +41,16 @@ export const Product = () => {
     useEffect(() => {
         getAllBooks();
     }, []);
+
+    const addToCart = (book: any) => {
+        const existingItem = cartItems.find((item: any) => item.bookId === book.bookId);
+        if (existingItem) {
+            alert('This book is already added to the cart.');
+            return;
+        }
+        const newCartItems = [...cartItems, { ...book, qty: 1 }];
+        setCartItems(newCartItems);
+    };
 
     return (
         <section className={"w-[100%] pt-20 pb-20 bg-slate-100"}>
@@ -92,8 +104,12 @@ export const Product = () => {
                         </button>
 
                         <button className="transition-all px-6 py-2 border-cyan-400 h-12 mt-2 bg-cyan-300 w-full
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                            <Link to={"/login"}>Add To Cart</Link>
+                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]"
+                        onClick={()=>{
+                            addToCart(book);
+                        }}>
+                            {/*<Link to={"/login"}>Add To Cart</Link>*/}
+                            Add To Cart
                         </button>
                     </div>
                 ))}

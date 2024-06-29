@@ -3,7 +3,6 @@ import {CartAndFav} from "../CartAndFav/CartAndFav";
 import {Home} from "../../pages/Home/Home";
 import {Footer} from "../Footer/Footer";
 import {Route, Routes} from "react-router-dom";
-import React from "react";
 import {About} from "../../pages/About/About";
 import {Product} from "../../pages/Product/Product";
 import {Contact} from "../../pages/Contact/Contact";
@@ -11,6 +10,7 @@ import {CartPage} from "../../pages/CartPage/CartPage";
 import {WishList} from "../../pages/WishList/WishList";
 
 export const DefaultView = () => {
+
     return (
         <>
             <NavBar></NavBar>
