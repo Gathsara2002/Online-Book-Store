@@ -20,7 +20,7 @@ const OrderController = {
     saveOrder: async function (req, res, next) {
         try {
             let body = req.body;
-            body.orderId = await this.generateNewOrderId();
+            body.orderId = await OrderController.generateNewOrderId();
             console.log(body);
             let promise = await model.create(body);
             res.status(200).json(promise);
