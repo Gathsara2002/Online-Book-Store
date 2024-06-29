@@ -1,9 +1,22 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Stack} from "@mui/material";
 import {Card, CardBody, CardTitle, Table} from "reactstrap";
 import api from "../../../../axios/axios";
 
 export const Products = () => {
+
+    interface Book {
+        bookId: string;
+        bookName: string;
+        author: string;
+        price: number;
+        genre: string;
+        qty: number;
+        view: string;
+    }
+
+    const [allBooks, setAllBooks] = useState([]);
+
     // State to hold form data
     const [formData, setFormData] = useState({
         bookName: '',
@@ -25,12 +38,12 @@ export const Products = () => {
 
     // Handle input change
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value, files } = e.target;
+        const {name, value, files} = e.target;
         if (name === 'view' && files) {
             const base64Image = await convertToBase64(files[0]);
-            setFormData({ ...formData, [name]: base64Image as string });
+            setFormData({...formData, [name]: base64Image as string});
         } else {
-            setFormData({ ...formData, [name]: value });
+            setFormData({...formData, [name]: value});
         }
     };
 
@@ -54,6 +67,7 @@ export const Products = () => {
                 .post('/book/save', newBook)
                 .then((res: any) => {
                     console.log("Response from API:", res);
+                    fetchBookData();
                     alert("Book saved successfully ! ");
                 })
                 .catch(error => {
@@ -64,6 +78,79 @@ export const Products = () => {
             console.error('Error saving book:', error);
         }
     };
+
+    //get data
+    const fetchBookData = () => {
+        try {
+            api
+                .get('/book/')
+                .then((res: any) => {
+                    console.log("Response from API:", res);
+                    setAllBooks(res.data)
+                })
+                .catch(error => {
+                    alert(error);
+                    console.log(error);
+                });
+        } catch (error) {
+            console.error('Error fetching books:', error);
+        }
+    }
+
+    useEffect(() => {
+        fetchBookData();
+    }, []);
+
+    //delete book
+    const deleteBook = (id: string) => {
+        try {
+            api
+                .delete(`/book/delete/${id}`)
+                .then((res: any) => {
+                    console.log("Response from API:", res);
+                    fetchBookData();
+                    alert("Book successfully deleted!")
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert("Failed to delete book. Please try again.");
+                });
+        } catch (error) {
+            console.error('Error :', error);
+            alert("Failed to delete book. Please try again.");
+        }
+    }
+
+    //update book
+    const updateBook = (id: string) => {
+
+        let updatedBook = {
+            bookId: '',
+            bookName: '',
+            author: '',
+            price: 0,
+            genre: '',
+            qty: 0,
+            view: ''
+        }
+
+        try {
+            api
+                .put(`/book/update/${id}`, updatedBook)
+                .then((res: any) => {
+                    console.log("Response from API:", res);
+                    fetchBookData();
+                    alert("Book successfully updated!")
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert("Failed to update book. Please try again.");
+                });
+        } catch (error) {
+            console.error('Error :', error);
+            alert("Failed to update book. Please try again.");
+        }
+    }
 
     return (
         <div className="p-4">
@@ -149,7 +236,7 @@ export const Products = () => {
                             <CardTitle tag="h2" className="text-2xl font-semibold mb-4 text-center">
                                 Book List
                             </CardTitle>
-                            <Table className="w-full border-collapse text-left">
+                            <Table hover={true} className="w-full border-collapse text-left">
                                 <thead className="bg-gray-800 text-white">
                                 <tr>
                                     <th className="py-3 px-4 border-b border-gray-700">Book ID</th>
@@ -158,10 +245,25 @@ export const Products = () => {
                                     <th className="py-3 px-4 border-b border-gray-700">Price</th>
                                     <th className="py-3 px-4 border-b border-gray-700">Genre</th>
                                     <th className="py-3 px-4 border-b border-gray-700">QTY</th>
+                                    <th className="py-3 px-4 border-b border-gray-700">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {/* Render your data here */}
+                                {allBooks.map((book: Book, index) => (
+                                    <tr key={index}>
+                                        <td className="py-2 px-2">{book.bookId}</td>
+                                        <td className="py-2 px-2">{book.bookName}</td>
+                                        <td className="py-2 px-2">{book.author}</td>
+                                        <td className="py-2 px-2">{book.price}</td>
+                                        <td className="py-2 px-2">{book.genre}</td>
+                                        <td className="py-2 px-2">{book.qty}</td>
+                                        <td className="py-2 px-2">
+                                            <Button variant="contained"
+                                                    onClick={() => deleteBook(book.bookId)}>Delete</Button>
+                                        </td>
+                                    </tr>
+                                ))}
                                 </tbody>
                             </Table>
                         </CardBody>
