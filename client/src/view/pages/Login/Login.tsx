@@ -34,7 +34,7 @@ export const Login = () => {
                     .post('/user/login')
                     .then((res: any) => {
                         console.log("Response from API:", res);
-                        localStorage.setItem('COnetoken', JSON.stringify(res.data.token));
+                        localStorage.setItem('COnetoken', JSON.stringify(res.data));
                         dispatch({type: 'LOGIN', payload: res.data});
                         alert("Login Success ! ");
                         navigate('/');

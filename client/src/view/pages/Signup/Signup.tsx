@@ -50,7 +50,7 @@ export const Signup = () => {
                 .post('/user/signup', newUser)
                 .then((res: any) => {
                     console.log("Response from API:", res);
-                    localStorage.setItem('COnetoken', JSON.stringify(res.data.token));
+                    localStorage.setItem('COnetoken', JSON.stringify(res.data));
                     dispatch({type: 'LOGIN', payload: res.data});
                     alert("Added new user successfully ! ");
                     setInputData({

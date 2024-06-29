@@ -19,10 +19,10 @@ export const AuthContextProvider = ({children}) => {
     })
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user'))
+        const user = JSON.parse(localStorage.getItem('COnetoken'))
 
         if (user) {
-            dispatch({type: 'LOGIN', payload: user})
+            dispatch({type: 'LOGIN', payload: user});
         }
     }, [])
 
