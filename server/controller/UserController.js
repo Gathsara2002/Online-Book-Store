@@ -26,6 +26,13 @@ const UserController = {
 
         try {
             let body = req.body;
+            let email =body.email;
+            const user = await model.findOne({email});
+            if (user) {
+                res.status(401).json({
+                    error: "User already saved!"
+                });
+            }
             body.userId = await UserController.generateNewUserId();
             body.password = await hashingPassword(body.password);
             console.log(body);
@@ -45,7 +52,7 @@ const UserController = {
     loginUser: async function (req, res, next) {
         try {
             const {email, password} = req.body;
-            const user = await this.findOne({email});
+            const user = await model.findOne({email});
             if (!user) {
                 res.status(401).json({
                     error: "Incorrect email"
