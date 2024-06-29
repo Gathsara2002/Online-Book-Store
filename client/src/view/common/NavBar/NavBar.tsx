@@ -1,16 +1,21 @@
 import logo from '../../../assests/icons/logo.png';
-import {Link} from "react-router-dom";
-import { AuthContext } from '../../../context/AuthContext';
+import {Link, useNavigate} from "react-router-dom";
+import {AuthContext} from '../../../context/AuthContext';
 import {useContext} from 'react';
+import {CartContext} from "../../../context/CartContext";
 
 export function NavBar() {
 
     const {user, dispatch} = useContext(AuthContext);
+    const {clearCart} = useContext(CartContext);
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         localStorage.removeItem('COnetoken');
         dispatch({type: 'LOGOUT'});
         localStorage.removeItem('cartItems');
+        clearCart();
+        navigate('/login');
     };
 
     return (
