@@ -85,7 +85,11 @@ const OrderController = {
 
             // Extract numeric parts and find the maximum
             const numericParts = existingIds.map(id => parseInt(id));
-            const maxNumericPart = Math.max(...numericParts);
+            let maxNumericPart = Math.max(...numericParts);
+
+            if (maxNumericPart === -Infinity) {
+                maxNumericPart = 0; // Start with 0 if no existing IDs
+            }
 
             // Generate new ID
             return (maxNumericPart + 1).toString().padStart(3, '0');
