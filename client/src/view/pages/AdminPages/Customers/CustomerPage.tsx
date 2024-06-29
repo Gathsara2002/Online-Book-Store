@@ -1,7 +1,6 @@
 import {Table, Card, CardBody, CardTitle} from 'reactstrap';
 import api from "../../../../axios/axios";
-import {useState} from "react";
-import {type} from "node:os";
+import {useEffect, useState} from "react";
 
 export const CustomerPage = () => {
 
@@ -14,11 +13,10 @@ export const CustomerPage = () => {
         password: string;
     }
 
-
     const [allCustomers, setAllCustomers] = useState([]);
 
     //get data
-    const getAllBooks = () => {
+    const getAllCustomers = () => {
 
         try {
             api
@@ -35,6 +33,10 @@ export const CustomerPage = () => {
             console.error('Error fetching users:', error);
         }
     }
+
+    useEffect(() => {
+        getAllCustomers();
+    }, []);
 
     return (
         <div className="w-full p-6 flex justify-center mt-6">
