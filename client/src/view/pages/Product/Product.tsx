@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 import api from "../../../axios/axios";
 import {useContext, useEffect, useState} from "react";
 import {CartContext} from "../../../context/CartContext";
+import {AuthContext} from "../../../context/AuthContext";
+import {useNavigate} from "react-router-dom";
 
 export const Product = () => {
 
@@ -16,6 +18,8 @@ export const Product = () => {
         view: string;
     }
 
+    const navigate = useNavigate()
+    const { user } = useContext(AuthContext);
     const { cartItems, setCartItems } = useContext(CartContext);
     const [allBooks, setAllBooks] = useState([]);
 
@@ -43,6 +47,12 @@ export const Product = () => {
     }, []);
 
     const addToCart = (book: any) => {
+        if (!user) {
+            alert('Please log in to add items to the cart.');
+            navigate('/login');
+            return;
+        }
+
         const existingItem = cartItems.find((item: any) => item.bookId === book.bookId);
         if (existingItem) {
             alert('This book is already added to the cart.');
