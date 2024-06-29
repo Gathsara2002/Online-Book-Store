@@ -13,7 +13,6 @@ const requireAuth = async (req, res, next) => {
 
     try {
         const {id} = jwt.verify(token, process.env.SECRET)
-
         req.user = await User.findOne({id}).select('userId')
         next()
 

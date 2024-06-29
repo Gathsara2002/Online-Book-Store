@@ -9,7 +9,7 @@ router.get('/', user.getUsers);
 router.post('/signup', user.signUpUser);
 
 //login user
-router.post('/login', user.loginUser);
+router.get('/login', user.loginUser);
 
 //update user
 router.put('/update/:id', user.updateUser);

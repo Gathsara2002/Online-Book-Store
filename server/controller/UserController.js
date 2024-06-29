@@ -26,15 +26,16 @@ const UserController = {
 
         try {
             let body = req.body;
-            body.userId = await this.generateNewUserId();
+            body.userId = await UserController.generateNewUserId();
             body.password = await hashingPassword(body.password);
             console.log(body);
             let promise = await model.create(body);
             let token = createToken(body.userId);
-            res.status(200).json(promise, token);
+            res.status(200).json({ user: promise, token: token });
+            //await this.SendMail(body.email);
 
         } catch (err) {
-            res.status(401).json({
+            res.status(500).json({
                 error: "User is not saved " + err
             });
         }
@@ -57,7 +58,7 @@ const UserController = {
                 });
             }
             let token = createToken(user.userId);
-            res.status(200).json(token);
+            res.status(200).json({ user: user, token: token });
 
         } catch (err) {
             res.status(401).json({

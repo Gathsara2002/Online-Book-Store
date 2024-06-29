@@ -25,6 +25,10 @@ const BookModel = mongoose.Schema({
             require: true,
             type: String
         },
+        "qty": {
+            require: true,
+            type: Number
+        },
         "view": {
             require: true,
             type: String
