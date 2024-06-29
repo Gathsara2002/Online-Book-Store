@@ -13,6 +13,31 @@ export const Login = () => {
         const [username, setUsername] = useState('');
         const [password, setPassword] = useState('');
 
+        //user login
+        const handleUserLogin = () => {
+            const user = {
+                "email": username,
+                "password": password
+            }
+
+            try {
+                api
+                    .post('/user/login', user)
+                    .then((res: any) => {
+                        console.log("Response from API:", res);
+                        localStorage.setItem('COnetoken', JSON.stringify(res.data));
+                        dispatch({type: 'LOGIN', payload: res.data});
+                        navigate('/')
+                        alert("Login Success ! ");
+                    })
+                    .catch(error => {
+                        alert(error);
+                        console.log(error);
+                    });
+            } catch (error) {
+                console.error('Error submitting data:', error);
+            }
+        }
 
         //this method is for check login process
         const handleLogin = () => {
@@ -22,31 +47,10 @@ export const Login = () => {
             //navigate to admin
             if (username === 'Admin' && password === '1234') {
                 navigate('/admin/db');
+            } else {
+                //navigate to user
+                handleUserLogin();
             }
-
-            //navigate to user
-
-        }
-
-        const handleUserLogin = () => {
-            try {
-                api
-                    .post('/user/login')
-                    .then((res: any) => {
-                        console.log("Response from API:", res);
-                        localStorage.setItem('COnetoken', JSON.stringify(res.data));
-                        dispatch({type: 'LOGIN', payload: res.data});
-                        alert("Login Success ! ");
-                        navigate('/');
-                    })
-                    .catch(error => {
-                        alert(error);
-                        console.log(error);
-                    });
-            } catch (error) {
-                console.error('Error submitting data:', error);
-            }
-
         }
 
 
@@ -63,7 +67,7 @@ export const Login = () => {
                                 <label
                                     htmlFor="username"
                                     className="block text-sm font-semibold text-gray-800">
-                                    Username
+                                    Username Or Email
                                 </label>
                                 <input
                                     type="text"
@@ -92,6 +96,7 @@ export const Login = () => {
                             </a>
                             <div className="mt-6">
                                 <button
+                                    type={"button"}
                                     onClick={handleLogin}
                                     className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
                                     Login
