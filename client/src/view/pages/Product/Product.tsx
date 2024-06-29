@@ -1,7 +1,45 @@
 import aboutImg from '../../../assests/images/about.jpg';
 import {Link} from "react-router-dom";
+import api from "../../../axios/axios";
+import {useEffect, useState} from "react";
 
 export const Product = () => {
+
+    interface Book {
+        bookId: string;
+        bookName: string;
+        author: string;
+        price: number;
+        genre: string;
+        qty: number;
+        view: string;
+    }
+
+    const [allBooks, setAllBooks] = useState([]);
+
+    //get data
+    const getAllBooks = () => {
+
+        try {
+            api
+                .get('/book/')
+                .then((res: any) => {
+                    console.log("Response from API:", res);
+                    setAllBooks(res.data)
+                })
+                .catch(error => {
+                    alert(error);
+                    console.log(error);
+                });
+        } catch (error) {
+            console.error('Error fetching books:', error);
+        }
+    }
+
+    useEffect(() => {
+        getAllBooks();
+    }, []);
+
     return (
         <section className={"w-[100%] pt-20 pb-20 bg-slate-100"}>
 
@@ -40,161 +78,31 @@ export const Product = () => {
             {/*books*/}
             <div className={"grid grid-cols-4 mt-12 mr-10 ml-10 p-2 gap-8"}>
 
-                <div className={"rounded bg-white shadow-lg shadow-gray-500 p-1"}>
-                    <img src={aboutImg} alt="image" className={"w-3/4 mx-auto mt-8"}/>
-                    <div className={"mt-10 grid grid-cols-2 pl-5 pr-5"}>
-                        <p className={"font-bold"}>Book</p>
-                        <p className={"text-end text-blue-500 font-bold"}>$ 10.00</p>
-                        <p>By Author</p>
-                        <p className={"text-end"}>Comic</p>
+                {allBooks.map((book: Book, index) => (
+                    <div className={"rounded bg-white shadow-lg shadow-gray-500 p-1"}>
+                        <img src={book.view ? book.view : aboutImg} alt="image" className={"w-3/4 mx-auto mt-8 h-1/2"}
+                             style={{backgroundPosition: 'center', backgroundSize: 'cover'}}/>
+                        <div className={"mt-10 grid grid-cols-2 pl-5 pr-5"}>
+                            <p className={"font-bold"}>{book.bookName}</p>
+                            <p className={"text-end text-blue-500 font-bold"}>Rs {book.price}</p>
+                            <p>By {book.author}</p>
+                            <p className={"text-end"}>{book.genre}</p>
+                        </div>
+                        <button className="transition-all px-6 py-2 border-green-500 mt-2 bg-green-400 w-full h-12
+                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
+                            <Link to={"/login"}>Add To Favourite</Link>
+                        </button>
+
+                        <button className="transition-all px-6 py-2 border-cyan-400 h-12 mt-2 bg-cyan-300 w-full
+                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
+                            <Link to={"/login"}>Add To Cart</Link>
+                        </button>
                     </div>
-                    <button className="transition-all px-6 py-2 border-green-500 mt-2 bg-green-400 w-full h-12
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Favourite</Link>
-                    </button>
-
-                    <button className="transition-all px-6 py-2 border-cyan-400 h-12 mt-2 bg-cyan-300 w-full
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Cart</Link>
-                    </button>
-
-                </div>
-                <div className={"rounded bg-white shadow-lg shadow-gray-500 p-1"}>
-                    <img src={aboutImg} alt="image" className={"w-3/4 mx-auto mt-8"}/>
-                    <div className={"mt-10 grid grid-cols-2 pl-5 pr-5"}>
-                        <p className={"font-bold"}>Book</p>
-                        <p className={"text-end text-blue-500 font-bold"}>$ 10.00</p>
-                        <p>By Author</p>
-                        <p className={"text-end"}>Comic</p>
-                    </div>
-                    <button className="transition-all px-6 py-2 border-green-500 mt-2 bg-green-400 w-full h-12
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Favourite</Link>
-                    </button>
-
-                    <button className="transition-all px-6 py-2 border-cyan-400 h-12 mt-2 bg-cyan-300 w-full
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Cart</Link>
-                    </button>
-
-                </div>
-                <div className={"rounded bg-white shadow-lg shadow-gray-500 p-1"}>
-                    <img src={aboutImg} alt="image" className={"w-3/4 mx-auto mt-8"}/>
-                    <div className={"mt-10 grid grid-cols-2 pl-5 pr-5"}>
-                        <p className={"font-bold"}>Book</p>
-                        <p className={"text-end text-blue-500 font-bold"}>$ 10.00</p>
-                        <p>By Author</p>
-                        <p className={"text-end"}>Comic</p>
-                    </div>
-                    <button className="transition-all px-6 py-2 border-green-500 mt-2 bg-green-400 w-full h-12
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Favourite</Link>
-                    </button>
-
-                    <button className="transition-all px-6 py-2 border-cyan-400 h-12 mt-2 bg-cyan-300 w-full
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Cart</Link>
-                    </button>
-
-                </div>
-                <div className={"rounded bg-white shadow-lg shadow-gray-500 p-1"}>
-                    <img src={aboutImg} alt="image" className={"w-3/4 mx-auto mt-8"}/>
-                    <div className={"mt-10 grid grid-cols-2 pl-5 pr-5"}>
-                        <p className={"font-bold"}>Book</p>
-                        <p className={"text-end text-blue-500 font-bold"}>$ 10.00</p>
-                        <p>By Author</p>
-                        <p className={"text-end"}>Comic</p>
-                    </div>
-                    <button className="transition-all px-6 py-2 border-green-500 mt-2 bg-green-400 w-full h-12
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Favourite</Link>
-                    </button>
-
-                    <button className="transition-all px-6 py-2 border-cyan-400 h-12 mt-2 bg-cyan-300 w-full
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Cart</Link>
-                    </button>
-
-                </div>
-                <div className={"rounded bg-white shadow-lg shadow-gray-500 p-1"}>
-                    <img src={aboutImg} alt="image" className={"w-3/4 mx-auto mt-8"}/>
-                    <div className={"mt-10 grid grid-cols-2 pl-5 pr-5"}>
-                        <p className={"font-bold"}>Book</p>
-                        <p className={"text-end text-blue-500 font-bold"}>$ 10.00</p>
-                        <p>By Author</p>
-                        <p className={"text-end"}>Comic</p>
-                    </div>
-                    <button className="transition-all px-6 py-2 border-green-500 mt-2 bg-green-400 w-full h-12
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Favourite</Link>
-                    </button>
-
-                    <button className="transition-all px-6 py-2 border-cyan-400 h-12 mt-2 bg-cyan-300 w-full
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Cart</Link>
-                    </button>
-
-                </div>
-                <div className={"rounded bg-white shadow-lg shadow-gray-500 p-1"}>
-                    <img src={aboutImg} alt="image" className={"w-3/4 mx-auto mt-8"}/>
-                    <div className={"mt-10 grid grid-cols-2 pl-5 pr-5"}>
-                        <p className={"font-bold"}>Book</p>
-                        <p className={"text-end text-blue-500 font-bold"}>$ 10.00</p>
-                        <p>By Author</p>
-                        <p className={"text-end"}>Comic</p>
-                    </div>
-                    <button className="transition-all px-6 py-2 border-green-500 mt-2 bg-green-400 w-full h-12
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Favourite</Link>
-                    </button>
-
-                    <button className="transition-all px-6 py-2 border-cyan-400 h-12 mt-2 bg-cyan-300 w-full
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Cart</Link>
-                    </button>
-
-                </div>
-                <div className={"rounded bg-white shadow-lg shadow-gray-500 p-1"}>
-                    <img src={aboutImg} alt="image" className={"w-3/4 mx-auto mt-8"}/>
-                    <div className={"mt-10 grid grid-cols-2 pl-5 pr-5"}>
-                        <p className={"font-bold"}>Book</p>
-                        <p className={"text-end text-blue-500 font-bold"}>$ 10.00</p>
-                        <p>By Author</p>
-                        <p className={"text-end"}>Comic</p>
-                    </div>
-                    <button className="transition-all px-6 py-2 border-green-500 mt-2 bg-green-400 w-full h-12
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Favourite</Link>
-                    </button>
-
-                    <button className="transition-all px-6 py-2 border-cyan-400 h-12 mt-2 bg-cyan-300 w-full
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Cart</Link>
-                    </button>
-
-                </div>
-                <div className={"rounded bg-white shadow-lg shadow-gray-500 p-1"}>
-                    <img src={aboutImg} alt="image" className={"w-3/4 mx-auto mt-8"}/>
-                    <div className={"mt-10 grid grid-cols-2 pl-5 pr-5"}>
-                        <p className={"font-bold"}>Book</p>
-                        <p className={"text-end text-blue-500 font-bold"}>$ 10.00</p>
-                        <p>By Author</p>
-                        <p className={"text-end"}>Comic</p>
-                    </div>
-                    <button className="transition-all px-6 py-2 border-green-500 mt-2 bg-green-400 w-full h-12
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Favourite</Link>
-                    </button>
-
-                    <button className="transition-all px-6 py-2 border-cyan-400 h-12 mt-2 bg-cyan-300 w-full
-                    border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                        <Link to={"/login"}>Add To Cart</Link>
-                    </button>
-
-                </div>
+                ))}
 
             </div>
 
         </section>
-    );
+    )
+        ;
 };
