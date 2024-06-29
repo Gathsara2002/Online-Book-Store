@@ -40,7 +40,7 @@ export const CustomerPage = () => {
 
     return (
         <div className="w-full p-6 flex justify-center mt-6">
-            <Card className="w-full max-w-4xl shadow-lg rounded-lg overflow-hidden bg-white">
+            <Card className="w-full shadow-lg rounded-lg overflow-hidden bg-white">
                 <CardBody className="p-6">
                     <CardTitle tag="h2" className="text-2xl font-semibold mb-4 text-center">
                         Customer List

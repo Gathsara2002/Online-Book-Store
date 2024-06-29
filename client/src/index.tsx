@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {AuthContextProvider} from "./context/AuthContext";
 import {CartProvider} from "./context/CartContext";
+import {Bounce, ToastContainer} from "react-toastify";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement

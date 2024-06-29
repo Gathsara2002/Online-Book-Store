@@ -28,7 +28,7 @@ export const Login = () => {
                         localStorage.setItem('COnetoken', JSON.stringify(res.data));
                         dispatch({type: 'LOGIN', payload: res.data});
                         navigate('/')
-                        alert("Login Success ! ");
+                        alert('Login successfully');
                     })
                     .catch(error => {
                         alert(error);
