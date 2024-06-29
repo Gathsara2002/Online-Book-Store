@@ -72,12 +72,10 @@ export const Product = () => {
                     border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px]
                     active:brightness-90 active:translate-y-[2px]"> Search
                 </button>
-
             </div>
 
             {/*books*/}
             <div className={"grid grid-cols-4 mt-12 mr-10 ml-10 p-2 gap-8"}>
-
                 {allBooks.map((book: Book, index) => (
                     <div className={"rounded bg-white shadow-lg shadow-gray-500 p-1"}>
                         <img src={book.view ? book.view : aboutImg} alt="image" className={"w-3/4 mx-auto mt-8 h-1/2"}
@@ -99,10 +97,8 @@ export const Product = () => {
                         </button>
                     </div>
                 ))}
-
             </div>
 
         </section>
-    )
-        ;
+    );
 };

@@ -13,33 +13,19 @@ export const OrderPage = () => {
                         <thead className="bg-gray-800 text-white">
                         <tr>
                             <th className="py-3 px-4 border-b border-gray-700">Order ID</th>
+                            <th className="py-3 px-4 border-b border-gray-700">Order Date</th>
+                            <th className="py-3 px-4 border-b border-gray-700">Item Count</th>
+                            <th className="py-3 px-4 border-b border-gray-700">Total</th>
                             <th className="py-3 px-4 border-b border-gray-700">Customer</th>
-                            <th className="py-3 px-4 border-b border-gray-700">Date</th>
-                            <th className="py-3 px-4 border-b border-gray-700">Amount</th>
-                            <th className="py-3 px-4 border-b border-gray-700">Status</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr className="bg-gray-100 hover:bg-gray-200">
-                            <td className="py-3 px-4 border-b border-gray-300">ORD123456</td>
-                            <td className="py-3 px-4 border-b border-gray-300">John Doe</td>
-                            <td className="py-3 px-4 border-b border-gray-300">2024-06-01</td>
-                            <td className="py-3 px-4 border-b border-gray-300">$250.00</td>
-                            <td className="py-3 px-4 border-b border-gray-300 text-green-600">Shipped</td>
-                        </tr>
                         <tr className="bg-white hover:bg-gray-200">
                             <td className="py-3 px-4 border-b border-gray-300">ORD654321</td>
                             <td className="py-3 px-4 border-b border-gray-300">Jane Smith</td>
                             <td className="py-3 px-4 border-b border-gray-300">2024-06-02</td>
                             <td className="py-3 px-4 border-b border-gray-300">$120.00</td>
                             <td className="py-3 px-4 border-b border-gray-300 text-yellow-500">Pending</td>
-                        </tr>
-                        <tr className="bg-gray-100 hover:bg-gray-200">
-                            <td className="py-3 px-4 border-b border-gray-300">ORD789012</td>
-                            <td className="py-3 px-4 border-b border-gray-300">Michael Brown</td>
-                            <td className="py-3 px-4 border-b border-gray-300">2024-06-03</td>
-                            <td className="py-3 px-4 border-b border-gray-300">$75.00</td>
-                            <td className="py-3 px-4 border-b border-gray-300 text-red-600">Cancelled</td>
                         </tr>
                         </tbody>
                     </Table>

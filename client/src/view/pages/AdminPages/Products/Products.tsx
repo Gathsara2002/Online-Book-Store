@@ -223,7 +223,6 @@ export const Products = () => {
                         </div>
                         <Stack spacing={3} direction="row" className="mt-4 justify-end">
                             <Button type={"submit"} variant="contained">Add</Button>
-                            <Button variant="contained">Delete</Button>
                             <Button variant="contained">Update</Button>
                         </Stack>
                     </form>
@@ -251,14 +250,14 @@ export const Products = () => {
                                 <tbody>
                                 {/* Render your data here */}
                                 {allBooks.map((book: Book, index) => (
-                                    <tr key={index}>
-                                        <td className="py-2 px-2">{book.bookId}</td>
-                                        <td className="py-2 px-2">{book.bookName}</td>
-                                        <td className="py-2 px-2">{book.author}</td>
-                                        <td className="py-2 px-2">{book.price}</td>
-                                        <td className="py-2 px-2">{book.genre}</td>
-                                        <td className="py-2 px-2">{book.qty}</td>
-                                        <td className="py-2 px-2">
+                                    <tr key={index} className="bg-white hover:bg-gray-200">
+                                        <td className="py-2 px-2 border-b border-gray-300">{book.bookId}</td>
+                                        <td className="py-2 px-2 border-b border-gray-300">{book.bookName}</td>
+                                        <td className="py-2 px-2 border-b border-gray-300">{book.author}</td>
+                                        <td className="py-2 px-2 border-b border-gray-300">{book.price}</td>
+                                        <td className="py-2 px-2 border-b border-gray-300">{book.genre}</td>
+                                        <td className="py-2 px-2 border-b border-gray-300">{book.qty}</td>
+                                        <td className="py-2 px-2 border-b border-gray-300">
                                             <Button variant="contained"
                                                     onClick={() => deleteBook(book.bookId)}>Delete</Button>
                                         </td>
