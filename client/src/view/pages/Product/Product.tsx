@@ -118,7 +118,6 @@ export const Product = () => {
                         onClick={()=>{
                             addToCart(book);
                         }}>
-                            {/*<Link to={"/login"}>Add To Cart</Link>*/}
                             Add To Cart
                         </button>
                     </div>

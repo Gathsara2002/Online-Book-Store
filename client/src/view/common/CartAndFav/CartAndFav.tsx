@@ -14,10 +14,10 @@ export function CartAndFav() {
 
             {/*Favourite*/}
             <div className={"w-1/2 flex cursor-pointer"}>
-                <Link to={"/wishlist"}>
-                    <img src={fav} alt="fav" className={"w-8 h-8 ml-12 mt-2"}/>
-                </Link>
-                <h3 className={"ml-2"}>0</h3>
+                {/*<Link to={"/wishlist"}>*/}
+                {/*    <img src={fav} alt="fav" className={"w-8 h-8 ml-12 mt-2"}/>*/}
+                {/*</Link>*/}
+                {/*<h3 className={"ml-2"}>0</h3>*/}
             </div>
 
             {/*Cart*/}

@@ -34,16 +34,25 @@ export const CartPage = () => {
 
     //save order
     const handlePayment = async () => {
+
+        const user = localStorage.getItem('COnetoken');
+        // @ts-ignore
+        const parsedUser = JSON.parse(user);
+        const customerId = parsedUser.user.userId;
+        console.log(customerId);
+
         try {
             // Prepare order data to send to the backend
             const orderData = {
                 orderDate: new Date().toISOString(),
                 totalItems: cartItems.length,
                 total: cartItems.reduce((sum: any, item: any) => sum + item.price * item.qty, 0),
-                customerId: 'customer123', // Replace with actual customer ID or get dynamically
+                customerId: customerId,
                 orderDetails: cartItems.map((item: any) => ({
+                    bookId: item.bookId,
                     bookName: item.bookName,
-                    price: item.price
+                    price: item.price,
+                    qty: item.qty
                 }))
             };
 
