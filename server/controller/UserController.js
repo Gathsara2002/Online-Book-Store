@@ -52,21 +52,23 @@ const UserController = {
     loginUser: async function (req, res, next) {
         try {
             const {email, password} = req.body;
+            console.log(email, password);
             const user = await model.findOne({email});
             if (!user) {
                 res.status(401).json({
                     error: "Incorrect email"
                 });
             }
+            console.log(user)
             const match = await compare(password, user.password);
             if (!match) {
                 res.status(401).json({
                     error: "Incorrect password"
                 });
             }
+            console.log(match)
             let token = createToken(user.userId);
             res.status(200).json({ user: user, token: token });
-
         } catch (err) {
             res.status(401).json({
                 error: "Login Failed" + err

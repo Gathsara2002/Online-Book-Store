@@ -1,4 +1,5 @@
 const model = require("../model/OrderModel");
+const BookModel = require("../model/BookModel");
 
 const OrderController = {
 
@@ -22,6 +23,27 @@ const OrderController = {
             let body = req.body;
             body.orderId = await OrderController.generateNewOrderId();
             console.log(body);
+
+            // Update book quantities for each book in orderDetails
+            const orderDetails = body.orderDetails;
+
+            for (let i = 0; i < orderDetails.length; i++) {
+                const bookId = orderDetails[i].bookId;
+                const qty = orderDetails[i].qty;
+
+                const updatedBook = await BookModel.findOneAndUpdate(
+                    { bookId: bookId },
+                    { $inc: { qty: -qty } },
+                    { new: true }
+                );
+
+                if (!updatedBook) {
+                    return res.status(404).json({
+                        error: `Book with ID ${bookId} not found!`
+                    });
+                }
+            }
+
             let promise = await model.create(body);
             res.status(200).json(promise);
 

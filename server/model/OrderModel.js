@@ -29,11 +29,20 @@ const orderModel = mongoose.Schema({
     "orderDetails": {
         require: true,
         type: [{
+            bookId: {
+                type: String,
+                required: true
+            },
             bookName: {
                 type: String,
                 required: true
             },
             price: {
+                type: Number,
+                required: true,
+                min: 0
+            },
+            qty: {
                 type: Number,
                 required: true,
                 min: 0
