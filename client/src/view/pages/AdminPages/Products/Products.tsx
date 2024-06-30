@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Stack } from "@mui/material";
-import { Card, CardBody, CardTitle, Table } from "reactstrap";
+import React, {useEffect, useState} from 'react';
+import {Button, Stack} from "@mui/material";
+import {Card, CardBody, CardTitle, Table} from "reactstrap";
 import api from "../../../../axios/axios";
+import BookDetailsModal from "./BookDetailModal";
 
 export const Products = () => {
 
@@ -24,9 +25,19 @@ export const Products = () => {
         view: ''
     };
 
+    const [modal, setModal] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedBook, setSelectedBook] = useState<Book | null>(null);
     const [allBooks, setAllBooks] = useState<Book[]>([]);
     const [formData, setFormData] = useState(initialFormData);
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+
+    const toggle = () => setModal(!modal);
+
+    const openBookDetails = (book: Book) => {
+        setSelectedBook(book);
+        toggle();
+    };
 
     // Function to convert file to base64
     const convertToBase64 = (file: File) => {
@@ -40,18 +51,18 @@ export const Products = () => {
 
     // Handle input change and validation
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value, files } = e.target;
+        const {name, value, files} = e.target;
 
         // Clear previous error message when user starts typing again
-        const newErrors = { ...formErrors };
+        const newErrors = {...formErrors};
         delete newErrors[name];
         setFormErrors(newErrors);
 
         if (name === 'view' && files) {
             const base64Image = await convertToBase64(files[0]);
-            setFormData({ ...formData, [name]: base64Image as string });
+            setFormData({...formData, [name]: base64Image as string});
         } else {
-            setFormData({ ...formData, [name]: value });
+            setFormData({...formData, [name]: value});
         }
     };
 
@@ -163,24 +174,15 @@ export const Products = () => {
     };
 
     // Update book
-    const updateBook = (id: string) => {
-        let updatedBook = {
-            bookId: '',
-            bookName: '',
-            author: '',
-            price: 0,
-            genre: '',
-            qty: 0,
-            view: ''
-        };
-
+    const updateBook = (updatedBook: Book) => {
         try {
             api
-                .put(`/book/update/${id}`, updatedBook)
+                .put(`/book/update/${updatedBook.bookId}`, updatedBook)
                 .then((res: any) => {
                     console.log("Response from API:", res);
                     fetchBookData();
                     alert("Book successfully updated!");
+                    setModalOpen(false); // Close modal after successful update
                 })
                 .catch(error => {
                     console.error(error);
@@ -190,6 +192,17 @@ export const Products = () => {
             console.error('Error :', error);
             alert("Failed to update book. Please try again.");
         }
+    };
+
+    // Open modal to edit book details
+    const openEditModal = (book: Book) => {
+        setSelectedBook(book);
+        setModalOpen(true);
+    };
+
+    // Close modal
+    const toggleModal = () => {
+        setModalOpen(!modalOpen);
     };
 
     return (
@@ -208,7 +221,8 @@ export const Products = () => {
                                     onChange={handleChange}
                                     className={`block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40 ${formErrors.bookName ? 'border-red-500' : ''}`}
                                 />
-                                {formErrors.bookName && <p className="text-red-500 text-xs mt-1">{formErrors.bookName}</p>}
+                                {formErrors.bookName &&
+                                    <p className="text-red-500 text-xs mt-1">{formErrors.bookName}</p>}
                             </div>
                             <div className="w-1/3">
                                 <label className="block text-sm text-gray-800">Author</label>
@@ -269,7 +283,6 @@ export const Products = () => {
                         </div>
                         <Stack spacing={3} direction="row" className="mt-4 justify-end">
                             <Button type={"submit"} variant="contained">Add</Button>
-                            <Button variant="contained">Update</Button>
                         </Stack>
                     </form>
                 </div>
@@ -304,7 +317,23 @@ export const Products = () => {
                                         <td className="py-2 px-2 border-b border-gray-300">{book.genre}</td>
                                         <td className="py-2 px-2 border-b border-gray-300">{book.qty}</td>
                                         <td className="py-2 px-2 border-b border-gray-300">
-                                            <Button variant="contained" onClick={() => deleteBook(book.bookId)}>Delete</Button>
+                                            {/*<Button variant="contained" onClick={() => deleteBook(book.bookId)}>Delete</Button>*/}
+                                            <Stack direction="row" spacing={2}>
+                                                <Button
+                                                    variant="contained"
+                                                    color="primary"
+                                                    onClick={() => openEditModal(book)}
+                                                >
+                                                    Edit
+                                                </Button>
+                                                <Button
+                                                    variant="contained"
+                                                    color="error"
+                                                    onClick={() => deleteBook(book.bookId)}
+                                                >
+                                                    Delete
+                                                </Button>
+                                            </Stack>
                                         </td>
                                     </tr>
                                 ))}
@@ -314,6 +343,16 @@ export const Products = () => {
                     </Card>
                 </div>
             </div>
+
+            {/* Modal for displaying and editing book details */}
+            {selectedBook && (
+                <BookDetailsModal
+                    book={selectedBook}
+                    isOpen={modalOpen}
+                    toggle={toggleModal}
+                    onUpdate={updateBook}
+                />
+            )}
         </div>
     );
 };
